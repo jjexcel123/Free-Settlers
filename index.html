@@ -373,33 +373,34 @@
 
     <!-- Operational Walkthrough Javascript Engine -->
     <script>
-        function checkWalkthroughQuiz() {
-            // Evaluates answers selected across the walkthrough
-            const q1Value = document.querySelector('input[name="q1"]:checked');
-            const q2Value = document.querySelector('input[name="q2"]:checked');
-            const q3Value = document.querySelector('input[name="q3"]:checked');
-            
-            const feedbackBox = document.getElementById("quiz-feedback");
+    function checkWalkthroughQuiz() {
+        // Evaluates answers selected across the walkthrough
+        const q1Value = document.querySelector('input[name="q1"]:checked');
+        const q2Value = document.querySelector('input[name="q2"]:checked');
+        const q3Value = document.querySelector('input[name="q3"]:checked');
+        
+        const feedbackBox = document.getElementById("quiz-feedback");
 
-            if (!q1Value || !q2Value || !q3Value) {
-                feedbackBox.textContent = "⚠️ Please answer all 3 questions before completing the stop evaluation!";
-                feedbackBox.style.color = var(--error-red);
-                return;
-            }
-
-            let correctCount = 0;
-            if (q1Value.value === "correct") correctCount++;
-            if (q2Value.value === "correct") correctCount++;
-            if (q3Value.value === "correct") correctCount++;
-
-            if (correctCount === 3) {
-                feedbackBox.textContent = "🏆 3/3 Correct! Excellent analytical eye. Proceed to the core text displays below.";
-                feedbackBox.style.color = "var(--success-green)";
-            } else {
-                feedbackBox.textContent = `❌ You scored ${correctCount}/3. Review your answers and try again before walking forward!`;
-                feedbackBox.style.color = "var(--error-red)";
-            }
+        // Fixed: Removed the CSS variable reference that was crashing the script
+        if (!q1Value || !q2Value || !q3Value) {
+            feedbackBox.textContent = "⚠️ Please answer all 3 questions before completing the stop evaluation!";
+            feedbackBox.style.color = "#fa5252"; 
+            return;
         }
-    </script>
+
+        let correctCount = 0;
+        if (q1Value.value === "correct") correctCount++;
+        if (q2Value.value === "correct") correctCount++;
+        if (q3Value.value === "correct") correctCount++;
+
+        if (correctCount === 3) {
+            feedbackBox.textContent = "🏆 3/3 Correct! Excellent analytical eye. Proceed to the core text displays below.";
+            feedbackBox.style.color = "#40c057"; 
+        } else {
+            feedbackBox.textContent = `❌ You scored ${correctCount}/3. Review your answers and try again before walking forward!`;
+            feedbackBox.style.color = "#fa5252"; 
+        }
+    }
+</script>
 </body>
 </html>
