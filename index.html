@@ -13,8 +13,8 @@
             --text-light: #f4f5f6;
             --text-muted: #9faab3;
             --border-color: #28313d;
-            --success-green: #40c057;
-            --error-red: #fa5252;
+            --success-green: #2b8a3e;
+            --error-red: #c92a2a;
         }
 
         * {
@@ -32,7 +32,7 @@
 
         /* Walkthrough Container Layout */
         .walkthrough-container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 40px 20px 100px 20px;
         }
@@ -75,16 +75,19 @@
             margin-bottom: 15px;
         }
 
-        h1 { font-size: 2.5rem; text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;}
-        h2 { font-size: 1.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;}
-        p { font-family: Arial, sans-serif; font-size: 1.05rem; color: #d1d5db; margin-bottom: 15px; }
+        h1 { font-size: 2.3rem; text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;}
+        h2 { font-size: 1.7rem; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 5px;}
+        h3 { font-size: 1.2rem; color: var(--accent-gold); margin-top: 15px; }
+        p { font-family: Arial, sans-serif; font-size: 1rem; color: #d1d5db; margin-bottom: 15px; }
+        ul, ol { font-family: Arial, sans-serif; font-size: 1rem; color: #d1d5db; margin-left: 25px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
 
         /* Media / Infographic / Map Box Layouts */
         .media-box {
             background: #11161c;
             border: 1px dashed var(--accent-gold);
             border-radius: 4px;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             margin: 20px 0;
         }
@@ -92,6 +95,7 @@
         .media-box img {
             max-width: 100%;
             height: auto;
+            max-height: 400px;
             border-radius: 4px;
             margin-top: 15px;
         }
@@ -99,7 +103,7 @@
         /* Source Gallery Grid Layout */
         .source-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin: 20px 0;
         }
@@ -107,8 +111,11 @@
         .source-card {
             background: #11161c;
             border: 1px solid var(--border-color);
-            padding: 15px;
+            padding: 20px;
             border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .source-tag {
@@ -116,10 +123,21 @@
             font-size: 0.75rem;
             background: var(--border-color);
             color: var(--accent-gold);
-            padding: 2px 6px;
+            padding: 2px 8px;
             border-radius: 3px;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            width: fit-content;
+        }
+
+        .source-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            margin-top: 10px;
+            font-style: italic;
         }
 
         /* Interactive Multi-Question Quiz Layout */
@@ -132,14 +150,27 @@
         }
 
         .quiz-question {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
             border-bottom: 1px dashed var(--border-color);
+        }
+
+        .quiz-question:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .quiz-question p {
             font-weight: bold;
             color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .option-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .option-label {
@@ -147,7 +178,6 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 12px;
-            margin: 8px 0;
             border-radius: 4px;
             cursor: pointer;
             font-family: Arial, sans-serif;
@@ -157,6 +187,11 @@
 
         .option-label:hover {
             border-color: var(--accent-gold);
+            background-color: #1e2630;
+        }
+
+        .option-label input {
+            margin-right: 10px;
         }
 
         .action-btn {
@@ -170,12 +205,43 @@
             cursor: pointer;
             width: 100%;
             font-size: 1rem;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: opacity 0.2s;
         }
 
         .action-btn:hover { opacity: 0.9; }
-        .feedback-box { font-family: Arial, sans-serif; font-weight: bold; margin-top: 15px; text-align: center; }
+        
+        .feedback-box { 
+            font-family: Arial, sans-serif; 
+            font-weight: bold; 
+            margin-top: 15px; 
+            text-align: center; 
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .feedback-success { background-color: var(--success-green); color: white; display: block; }
+        .feedback-error { background-color: var(--error-red); color: white; display: block; }
+
+        /* Perspective Box Grid */
+        .perspective-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .perspective-grid { grid-template-columns: 1fr; }
+        }
+
+        .perspective-card {
+            background-color: #11161c;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 4px;
+        }
 
         /* Bibliography layout styling */
         .bib-entry {
@@ -184,6 +250,7 @@
             padding-left: 30px;
             text-indent: -30px;
             margin-bottom: 15px;
+            color: #d1d5db;
         }
         .italic-title { font-style: italic; }
 
@@ -204,204 +271,26 @@
 
         <!-- START WALKTHROUGH: COVER SLIDE -->
         <header class="museum-stop" style="border-left: none; text-align: center;">
-            <div class="school-header">Jachin Saxby — Year 9 History</div>
+            <div class="school-header">Jachin Saxby — Year 9 History — Mountains Christian College</div>
             <h1>The Movement of Peoples: Chinese Migrants During the Australian Gold Rush</h1>
             <p style="text-align: center; color: var(--text-muted); margin-top: 15px;">
                 Topic: The Movement of Peoples (1750–1901)<br>
-                A Digital Tour Exploring People, Facts, and Stats
+                A Digital Exhibition Powered by Historical Data &amp; Statistics
             </p>
         </header>
 
-        <!-- STOP 1: THE INFOGRAPHIC / MAP PLACEHOLDER -->
+        <!-- STOP 1: INTRODUCTION, MAP & STATS -->
         <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 1: Overview Map &amp; Timeline</div>
-            <h2>Mapping the Movement</h2>
-            <p>Welcome to the first stope of the exhibition. Below is the map of how Chinese migrants went to and from Australia.</p>
+            <div class="stop-number">Exhibit Stop 1: Introduction &amp; Waves of Migration</div>
+            <h2>Immigration Waves and Statistics</h2>
+            <p>The movement of Chinese populations to Australia during the 19th century stands out as a critical chapter in early global migrations. When gold was first discovered across Australia, Chinese immigration increased significantly, transforming simple tracking outposts into major multi-cultural sites.</p>
             
-            <!-- Replace the image link below with your actual map/infographic link -->
             <div class="media-box">
-                <h3>[Your Custom Infographic/Route Map Title]</h3>
-                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFScqA7hNJMZIdnraAcAtqa0CcdYW9NqGFQvaHBqXVKTn3cQ1g" alt="Map/Infographic space">
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Figure 1.1: Cartographic layout showcasing major global deployment paths during the era.</p>
-            </div>
-            
-            <p>[Write 1-2 paragraphs introducing your focus group, establishing context, and explaining what the map shows.]</p>
-        </div>
-
-        <!-- STOP 2: THE 3-QUESTION INTERACTIVE QUIZ -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 2: Checkpoint Check-In</div>
-            <h2>Interactive Visitor Quiz</h2>
-            <p>Before proceeding deeper into the personal narratives of the movement, let's test your basic contextual.</p>
-            
-            <div class="quiz-wrapper">
-                <!-- Question 1 -->
-                <div class="quiz-question" id="q1-box">
-                    <p>1. What does 67 mean?</p>
-                    <label class="option-label"><input type="radio" name="q1" value="wrong"> Sigma boy sigma boy</label>
-                    <label class="option-label"><input type="radio" name="q1" value="wrong"> My IQ is lower than yours</label>
-                    <label class="option-label"><input type="radio" name="q1" value="wrong"> I am the ultimate rizzmaster</label>
-                    <label class="option-label"><input type="radio" name="q1" value="correct"> All of the above</label>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="quiz-question" id="q2-box">
-                    <p>2. Why do pigs fly?</p>
-                    <label class="option-label"><input type="radio" name="q2" value="wrong"> They don't, idiot</label>
-                    <label class="option-label"><input type="radio" name="q2" value="correct"> They use ammonium chloride gas jets</label>
-                    <label class="option-label"><input type="radio" name="q2" value="correct"> They eat so much pizza their bouyancy decreases to lower than air</label>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="quiz-question" id="q3-box">
-                    <p>3. What is the best food on earth?</p>
-                    <label class="option-label"><input type="radio" name="q3" value="wrong"> Tacos</label>
-                    <label class="option-label"><input type="radio" name="q3" value="wrong"> Burritos</label>
-                    <label class="option-label"><input type="radio" name="q3" value="correct"> Pizza</label>
-                </div>
-
-                <button class="action-btn" onclick="checkWalkthroughQuiz()">Submit Answers</button>
-                <div class="feedback-box" id="quiz-feedback"></div>
-            </div>
-        </div>
-
-        <!-- STOP 3: DISPLAY PANEL A (CAUSES) -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 3: Core Display Panel</div>
-            <h2>Causes of the Movement</h2>
-            <p><strong>Push Factors (Why they left):</strong> [Write out the societal, political, or economic issues forcing them out of their homeland.]</p>
-            <p><strong>Pull Factors (Why Australia):</strong> [Write out the opportunities, resources, or policies drawing them here.]</p>
-            <p>[Add extra historical details or context to ensure your analysis remains highly sophisticated for your marking criteria.]</p>
-        </div>
-
-        <!-- STOP 4: PRIMARY EVIDENCE GALLERY -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 4: Archival Documents Vault</div>
-            <h2>Primary Source Records</h2>
-            <p>Analyze these direct artifacts from the 18th/19th century to understand the historical authenticity of these events.</p>
-            
-            <div class="source-grid">
-                <!-- Source Card 1 -->
-                <div class="source-card">
-                    <span class="source-tag">Primary Source 1</span>
-                    <!-- Replace image URL -->
-                    <img src="https://unsplash.com" alt="Source 1 Archive Graphic" style="width:100%; height:130px; object-fit:cover; border-radius:2px;">
-                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;"><strong>Caption &amp; Value:</strong> [Explain this source in your own words. Detail exactly how it backs up your claims regarding causes or experiences.]</p>
-                </div>
-
-                <!-- Source Card 2 -->
-                <div class="source-card">
-                    <span class="source-tag">Primary Source 2</span>
-                    <!-- Replace image URL -->
-                    <img src="https://unsplash.com" alt="Source 2 Archive Graphic" style="width:100%; height:130px; object-fit:cover; border-radius:2px;">
-                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;"><strong>Caption &amp; Value:</strong> [Provide caption explanation in your own words, demonstrating its reliability or viewpoint clarity.]</p>
-                </div>
-
-                <!-- Source Card 3 -->
-                <div class="source-card">
-                    <span class="source-tag">Primary Source 3</span>
-                    <!-- Replace image URL -->
-                    <img src="https://unsplash.com" alt="Source 3 Archive Graphic" style="width:100%; height:130px; object-fit:cover; border-radius:2px;">
-                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;"><strong>Caption &amp; Value:</strong> [Explain this source in your own words, highlighting how it represents individual struggles or interactions.]</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- STOP 5: DISPLAY PANEL B (EXPERIENCES) -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 5: Core Display Panel</div>
-            <h2>Lived Experiences of Individuals &amp; Groups</h2>
-            <p>[Describe what the real daily journey was like. Discuss ship conditions, work life, climate transitions, processing systems, or systemic barriers they encountered upon arrival.]</p>
-            <p>[Integrate historical terminology like migration patterns, assimilation, class structures, or labor conditions naturally.]</p>
-        </div>
-
-        <!-- STOP 6: DIFFERENT PERSPECTIVES FOCUS -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 6: Analytical Perspectives Wing</div>
-            <h2>Showcasing Different Perspectives</h2>
-            <p>History is not one-sided. This display analyzes how a single key event or impact during this movement was perceived entirely differently depending on who you were.</p>
-            
-            <div style="background:#11161c; padding:20px; border-radius:4px; margin-top:15px;">
-                <h3 style="color:var(--accent-gold);">Focus Event: [Insert Event or Experience Here]</h3>
-                <p><strong>Perspective A ([e.g. British Government / Free Settlers]):</strong> [Explain their view, motives, and reasoning.]</p>
-                <p style="margin-top:15px;"><strong>Perspective B ([e.g. Indigenous Communities / Immigrant Workers]):</strong> [Explain their alternate experience, perspective, and why they held this outlook.]</p>
-            </div>
-        </div>
-
-        <!-- STOP 7: DISPLAY PANEL C (IMPACTS) & CONCLUSION -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Stop 7: Deep Impact Room</div>
-            <h2>Impacts on Society &amp; Historic Significance</h2>
-            <p><strong>Short-Term Societal Shifts:</strong> [Discuss instant conflicts, town foundations, rapid economic booms, or legislation modifications.]</p>
-            <p><strong>Long-Term Legacies:</strong> [Analyze the generational footprint, demographic make-up changes, cultural values, or institutional structures left behind.]</p>
-            
-            <h3 style="margin-top:30px; border-top:1px dashed var(--border-color); padding-top:20px;">Conclusion: Significance to Australia</h3>
-            <p>[Summarize why this explicit group of people holds a critical place in shaping the continuous history of modern Australia.]</p>
-        </div>
-
-        <!-- STOP 8: BIBLIOGRAPHY (APA STYLE) -->
-        <div class="museum-stop">
-            <div class="stop-number">Exhibit Exit: Academic Credentials</div>
-            <h2>Bibliography &amp; Research Citations</h2>
-            <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:20px;">Minimum 6 sources included, structured perfectly in line with APA reference guidelines.</p>
-            
-            <!-- Book Reference Layout -->
-            <div class="bib-entry">
-                Author, A. A. (Year of publication). <span class="italic-title">Title of book: Capital letter also for subtitle</span>. Publisher.
+                <h3>Chinese Maritime Deployment Map</h3>
+                <img src="https://gstatic.com" alt="Map detailing Chinese migration from Guangdong to Australia and New Zealand">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Figure 1.1: Historical route map illustrating transit from China into primary Australian goldfield networks.</p>
             </div>
 
-            <!-- Website Reference Layout -->
-            <div class="bib-entry">
-                Author, B. B. (Year, Month Date). <span class="italic-title">Title of page</span>. Website Name. Viewed Day Month Year, &lt;URL&gt;
-            </div>
-
-            <!-- Add your other 4 sources using the templates below -->
-            <div class="bib-entry">
-                [Source 3 Copy Template]
-            </div>
-            <div class="bib-entry">
-                [Source 4 Copy Template]
-            </div>
-            <div class="bib-entry">
-                [Source 5 Copy Template]
-            </div>
-            <div class="bib-entry">
-                [Source 6 Copy Template Image Asset Source Info]
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Operational Walkthrough Javascript Engine -->
-    <script>
-    function checkWalkthroughQuiz() {
-        // Evaluates answers selected across the walkthrough
-        const q1Value = document.querySelector('input[name="q1"]:checked');
-        const q2Value = document.querySelector('input[name="q2"]:checked');
-        const q3Value = document.querySelector('input[name="q3"]:checked');
-        
-        const feedbackBox = document.getElementById("quiz-feedback");
-
-        // Fixed: Removed the CSS variable reference that was crashing the script
-        if (!q1Value || !q2Value || !q3Value) {
-            feedbackBox.textContent = "⚠️ Please answer all 3 questions before completing the stop evaluation!";
-            feedbackBox.style.color = "#fa5252"; 
-            return;
-        }
-
-        let correctCount = 0;
-        if (q1Value.value === "correct") correctCount++;
-        if (q2Value.value === "correct") correctCount++;
-        if (q3Value.value === "correct") correctCount++;
-
-        if (correctCount === 3) {
-            feedbackBox.textContent = "🏆 3/3 Correct! Excellent analytical eye. Proceed to the core text displays below.";
-            feedbackBox.style.color = "#40c057"; 
-        } else {
-            feedbackBox.textContent = `❌ You scored ${correctCount}/3. Review your answers and try again before walking forward!`;
-            feedbackBox.style.color = "#fa5252"; 
-        }
-    }
-</script>
-</body>
-</html>
+            <p>A statistical analysis reveals the massive scope of this historical demographic wave:</p>
+            <ul>
+                <li><strong>1856 Peak:</strong> The single highest number of Chinese arrivals recorded in one year reached a massive <strong>12,396 people</strong>.</li>
