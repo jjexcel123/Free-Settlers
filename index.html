@@ -4,13 +4,222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Movement of Peoples: Chinese Migrants During the Australian Gold Rush</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* [ ... same CSS as your original ... ] */
-        /* For brevity, CSS is unchanged and skipped here */
+        :root {
+            --bg-color: #111419;
+            --section-bg: rgba(30,24,33,0.94);
+            --accent-gold: #e3bd69;
+            --text-light: #f5f5f5;
+            --text-muted: #b2b9bd;
+            --border-color: #2a2935;
+            --success-green: #2ebf5a;
+            --error-red: #ff3d48;
+            --card-shadow: 0 4px 24px rgba(35, 32, 34, 0.14), 0 1.5px 14px var(--accent-gold, #e3bd69, 0.07);
+        }
+        html, body {
+            background: linear-gradient(135deg, #151a21 0%, #23212c 100%);
+            min-height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        body {
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+        }
+        .walkthrough-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 44px 6vw 80px 6vw;
+        }
+        header.museum-stop {
+            border-left: none !important;
+            background: linear-gradient(90deg, #222432 80%, #23212c 100%);
+            box-shadow: 0 0 40px #15151a33;
+        }
+        .museum-stop {
+            background: var(--section-bg);
+            border: 2.5px solid var(--border-color);
+            border-left: 9px solid var(--accent-gold);
+            border-radius: 14px;
+            padding: 36px 36px 24px 36px;
+            margin-bottom: 62px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.18s;
+        }
+        .museum-stop:hover {
+            transform: scale(1.012) translateY(-2.5px);
+            box-shadow: 0 8px 30px #fff2  , 0 2px 24px var(--accent-gold, #f9e699, 0.09);
+        }
+        .stop-number {
+            color: var(--accent-gold);
+            font-size: 1.02rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        h1, h2, h3 {
+            color: var(--accent-gold);
+            font-family: 'EB Garamond', serif;
+            letter-spacing: 0.02em;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        h1 {
+            font-size: 2.3rem; text-align: center; 
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 18px;
+        }
+        h2 { font-size: 1.5rem; border-bottom: 1px solid #21222b; }
+        h3 { font-size: 1.15rem; }
+        p, ul, ol {
+            color: #e5e7eb;
+            font-size: 1.06rem;
+            margin-bottom: 14px;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .media-box {
+            background: #181824ef;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            box-shadow: 0 2px 18px #fff2;
+            text-align: center;
+            margin: 24px 0 28px 0;
+            padding: 18px;
+            transition: box-shadow 0.18s;
+        }
+        .media-box img {
+            max-width: 97%;
+            max-height: 300px;
+            border-radius: 7px;
+            margin-top: 10px;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 6px 36px #0009;
+            transition: box-shadow 0.19s;
+        }
+        .media-box img:hover { box-shadow: 0 0px 80px #e3bd6933; }
+        .media-box .source-caption {
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            margin-top: 10px;
+            font-style: italic;
+            border-top: 1px solid #2b2b3d;
+            padding-top: 8px;
+        }
+        .perspective-grid {
+            display: flex; gap: 22px; margin-top: 22px; flex-wrap: wrap;
+        }
+        .perspective-card {
+            flex: 1 1 230px;
+            background: #181824fa;
+            border: 1.5px solid var(--accent-gold);
+            border-radius: 7px;
+            padding: 16px 19px 12px;
+            color: #eed;
+            min-width: 220px;
+            box-shadow: 0 0 18px #000a;
+        }
+        .bib-entry {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            padding-left: 18px;
+        }
+        .bib-entry a { color: var(--accent-gold); text-decoration: underline; }
+        .school-header {
+            text-align: center;
+            color: #fff8d4;
+            font-size: 1.02rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        /* Quiz styling */
+        .quiz-wrapper {
+            background: #17192a;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px #23223355;
+            padding: 28px 23px;
+            max-width: 640px;
+            margin: 0 auto 50px auto;
+        }
+        .quiz-title {
+            color: var(--accent-gold);
+            font-size: 1.25rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+        .quiz-question {
+            margin-bottom: 23px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #444;
+        }
+        .quiz-question:last-child {
+            border-bottom: none;
+        }
+        .option-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-label {
+            background: #151420;
+            border: 1.5px solid #252131;
+            border-radius: 5px;
+            padding: 10px 13px;
+            cursor: pointer;
+            color: #efe7cc;
+            transition: background 0.15s, border-color 0.15s;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .option-label:hover, .option-label.selected {
+            border-color: var(--accent-gold);
+            background: #232434;
+            color: var(--accent-gold);
+        }
+        .option-label input[type="radio"],
+        .option-label input[type="checkbox"] { margin-right: 10px; }
+        .action-btn {
+            background-color: var(--accent-gold);
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1.04rem;
+            margin-top: 15px;
+            box-shadow: 0 1px 8px #0007;
+            transition: background 0.19s;
+        }
+        .action-btn:hover { background-color: #ffe69c; }
+        .feedback-box {
+            font-weight: bold;
+            margin-top: 14px;
+            text-align: center;
+            padding: 11px;
+            border-radius: 5px;
+            color: white;
+            display: none;
+        }
+        .feedback-success { background-color: var(--success-green); display: block;}
+        .feedback-error { background-color: var(--error-red); display: block;}
+        @media (max-width: 700px) {
+            .walkthrough-container { padding: 3vw 1vw 80px 1vw;}
+            .museum-stop { padding: 18px 7px 14px 15px; }
+            .media-box, .perspective-card { padding: 11px; }
+        }
     </style>
 </head>
 <body>
-
     <div class="walkthrough-container">
 
         <!-- COVER -->
@@ -104,6 +313,42 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Museum Quiz -->
+        <div class="museum-stop">
+            <div class="stop-number">Test Your Knowledge</div>
+            <div class="quiz-wrapper" id="goldQuiz">
+                <div class="quiz-title">📚 Quick Gold Rush Quiz (3 questions)</div>
+                <form id="quizForm">
+                    <div class="quiz-question">
+                        <p>1. What was the peak year for Chinese arrivals to Australia during the gold rush?</p>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="q1" value="1856">1856</label>
+                            <label class="option-label"><input type="radio" name="q1" value="1837">1837</label>
+                            <label class="option-label"><input type="radio" name="q1" value="1912">1912</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. Besides gold, what other metals did Chinese miners extract?</p>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="q2" value="Tin, copper, tungsten">Tin, copper, tungsten</label>
+                            <label class="option-label"><input type="radio" name="q2" value="Silver and uranium">Silver and uranium</label>
+                            <label class="option-label"><input type="radio" name="q2" value="Iron and zinc">Iron and zinc</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. After the gold rush, which job became common among Chinese who stayed?</p>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="q3" value="Market gardening">Market gardening</label>
+                            <label class="option-label"><input type="radio" name="q3" value="Shipbuilding">Shipbuilding</label>
+                            <label class="option-label"><input type="radio" name="q3" value="Timber felling">Timber felling</label>
+                        </div>
+                    </div>
+                    <button type="button" class="action-btn" onclick="scoreQuiz()">Check Answers</button>
+                </form>
+                <div id="quizFeedback" class="feedback-box"></div>
+            </div>
+        </div>
 
         <!-- Bibliography & Further Readings -->
         <div class="museum-stop">
@@ -126,5 +371,35 @@
         </div>
 
     </div>
+    <script>
+        function scoreQuiz() {
+            let score = 0;
+            let q1 = document.querySelector('input[name="q1"]:checked');
+            let q2 = document.querySelector('input[name="q2"]:checked');
+            let q3 = document.querySelector('input[name="q3"]:checked');
+            let feedback = document.getElementById('quizFeedback');
+            if(!q1 || !q2 || !q3) {
+                feedback.textContent = "Please answer all questions!";
+                feedback.className = "feedback-box feedback-error";
+                return;
+            }
+            if(q1.value === "1856") score++;
+            if(q2.value === "Tin, copper, tungsten") score++;
+            if(q3.value === "Market gardening") score++;
+            if(score === 3) {
+                feedback.textContent = "🏆 Excellent! You got all correct!";
+                feedback.className = "feedback-box feedback-success";
+            } else if(score === 2) {
+                feedback.textContent = "👍 Good! You got 2 out of 3 correct.";
+                feedback.className = "feedback-box feedback-success";
+            } else if(score === 1) {
+                feedback.textContent = "🙂 You got 1 out of 3. Try and review the exhibits again!";
+                feedback.className = "feedback-box feedback-error";
+            } else {
+                feedback.textContent = "☹️ No correct answers. Have another go!";
+                feedback.className = "feedback-box feedback-error";
+            }
+        }
+    </script>
 </body>
 </html>
